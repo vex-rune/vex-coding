@@ -1,0 +1,45 @@
+[package]
+name = "vex-engine"
+version = "0.1.0"
+edition = "2021"
+description = "Vex-Coding 本地代码索引引擎"
+license = "MIT"
+repository = "https://github.com/vex-team/vex-coding"
+
+[dependencies]
+# 代码解析
+tree-sitter = "0.23"
+tree-sitter-java = "0.23"
+tree-sitter-python = "0.23"
+tree-sitter-javascript = "0.23"
+tree-sitter-typescript = "0.23"
+
+# 序列化
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# 数据库
+rusqlite = { version = "0.32", features = ["bundled"] }
+
+# 异步
+tokio = { version = "1.0", features = ["full"] }
+
+# 错误处理
+thiserror = "2.0"
+anyhow = "1.0"
+
+# 日志
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# 路径处理
+dirs = "5.0"
+
+# glob 模式匹配
+glob = "0.3"
+
+# 正则表达式
+regex = "1.10"
+
+[dev-dependencies]
+tempfile = "3.14"

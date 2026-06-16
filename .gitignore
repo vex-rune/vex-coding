@@ -1,0 +1,77 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+out/
+*.tsbuildinfo
+
+# Rust
+target/
+*.rs.bk
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Test coverage
+coverage/
+*.lcov
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Plugin builds
+idea-plugin/build/
+idea-plugin/.gradle/
+
+# VSCode Extension
+vscode-extension/*.vsix
+
+# Local engine builds
+local-engine/target/release/vex-engine*
+local-engine/target/debug/vex-engine*
+
+# Node modules in subdirectories
+core/node_modules/
+vscode-extension/node_modules/
+idea-plugin/node_modules/
+
+# Lock files (optional, some prefer to commit)
+# pnpm-lock.yaml
+# package-lock.json
+
+# Build artifacts
+*.jar
+*.dll
+*.dylib
+*.so
+
+# .vexcoding (can be useful for debugging but usually ignored)
+# .vexcoding/
+
+# Temporary test files
+test-workspace/
+tmp/
+temp/

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://www.jetbrains.org/plugins/intellij-plugin">
+    <id>com.vex.coding</id>
+    <name>Vex Coding</name>
+    <vendor>Vex Team</vendor>
+    <description>AI 编程助手，对标通义灵码</description>
+    <version>0.1.0</version>
+    
+    <!-- 兼容的 IDE 版本 -->
+    <idea-version since-build="241" until-build="243.*"/>
+    
+    <!-- 依赖插件 -->
+    <depends>com.intellij.modules.platform</depends>
+    
+    <!-- Actions -->
+    <actions>
+        <group id="VexCoding.Menu" text="Vex Coding" description="Vex Coding 菜单">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+            
+            <action id="VexCoding.AskAction"
+                    class="com.vex.coding.actions.AskAction"
+                    text="智能问答"
+                    description="打开 AI 问答面板">
+                <keyboard-shortcut keymap="$default" first-keystroke="alt shift L"/>
+            </action>
+            
+            <action id="VexCoding.ExplainAction"
+                    class="com.vex.coding.actions.ExplainAction"
+                    text="AI 代码解释"
+                    description="解释选中的代码">
+                <keyboard-shortcut keymap="$default" first-keystroke="alt shift E"/>
+            </action>
+        </group>
+    </actions>
+    
+    <!-- 应用服务 -->
+    <applicationService serviceImplementation="com.vex.coding.service.LLMService"/>
+    <applicationService serviceImplementation="com.vex.coding.config.ConfigService"/>
+    
+    <!-- 工具窗口 -->
+    <toolWindow id="Vex Coding"
+                anchor="right"
+                factoryClass="com.vex.coding.ui.ChatToolWindowFactory"
+                canClose="true"
+                canDistract="false"/>
+</plugin>

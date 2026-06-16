@@ -1,0 +1,105 @@
+{
+  "name": "vex-coding",
+  "displayName": "Vex Coding",
+  "description": "AI 编程助手，对标通义灵码",
+  "version": "0.1.0",
+  "publisher": "vex-team",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets"
+  ],
+  "keywords": [
+    "ai",
+    "coding",
+    "assistant"
+  ],
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onCommand:vex-coding.ask",
+    "onCommand:vex-coding.explain",
+    "onView:vex-coding-view"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "vex-coding.ask",
+        "title": "Vex Coding: 智能问答",
+        "category": "Vex Coding"
+      },
+      {
+        "command": "vex-coding.explain",
+        "title": "Vex Coding: 代码解释",
+        "category": "Vex Coding"
+      }
+    ],
+    "views": {
+      "vex-coding-view": [
+        {
+          "type": "webview",
+          "id": "vex-coding-view",
+          "name": "Vex Coding"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "vex-coding.ask",
+        "key": "alt shift l",
+        "mac": "alt shift l",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "vex-coding.explain",
+        "key": "alt shift e",
+        "mac": "alt shift e",
+        "when": "editorTextFocus"
+      }
+    ],
+    "configuration": {
+      "title": "Vex Coding",
+      "properties": {
+        "vexCoding.apiEndpoint": {
+          "type": "string",
+          "default": "https://api.mimo.ai",
+          "description": "API 端点"
+        },
+        "vexCoding.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "API Key"
+        },
+        "vexCoding.model": {
+          "type": "string",
+          "default": "mimo-pro",
+          "description": "使用的模型"
+        },
+        "vexCoding.maxTokens": {
+          "type": "number",
+          "default": 2048,
+          "description": "最大 Token 数"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "dev": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "@vscode/test-electron": "^2.3.8",
+    "@vscode/vsce": "^2.24.0",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.0"
+  },
+  "dependencies": {}
+}
