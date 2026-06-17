@@ -28,7 +28,7 @@ class ExplainPopup(
     
     init {
         title = "AI 代码解释"
-        modal = false
+        isModal = false
         setLocationRelativeTo(null)
         
         contentPane.layout = java.awt.BorderLayout()
@@ -42,7 +42,7 @@ class ExplainPopup(
         buttonPanel.add(closeButton)
         contentPane.add(buttonPanel, java.awt.BorderLayout.SOUTH)
         
-        setSize(Dimension(600, 400))
+        size = Dimension(600, 400)
         
         // 加载解释
         loadExplanation()

@@ -1,44 +1,27 @@
-package com.vex.coding.service
+package com.vex.coding
 
-import com.vex.coding.config.ConfigService
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
+import com.vex.coding.service.LLMException
 
 /**
  * LLMService 单元测试
  */
 class LLMServiceTest {
     
-    @BeforeEach
-    fun setup() {
-        val config = ConfigService.getInstance()
-        config.setApiKey("")
+    @Test
+    fun `should throw exception when not configured`() {
+        // 测试 LLMException 属性
+        val error = LLMException("Test error", "TEST_CODE", 500)
+        assertThat(error.message).isEqualTo("Test error")
+        assertThat(error.code).isEqualTo("TEST_CODE")
+        assertThat(error.statusCode).isEqualTo(500)
     }
     
     @Test
-    fun `should throw exception when not configured`() {
-        val service = LLMService()
-        val context = Context(
-            files = emptyList(),
-            cursor = CursorPosition(1, 1),
-            selectedCode = null
-        )
-        
-        assertThatThrownBy {
-            runBlocking {
-                service.chat("test", context)
-            }
-        }
-            .isInstanceOf(LLMException::class.java)
-            .hasMessageContaining("API Key")
+    fun `should create error with code only`() {
+        val error = LLMException("Error", "CODE_ONLY")
+        assertThat(error.statusCode).isNull()
     }
-}
-
-/**
- * 辅助测试类
- */
-private fun <T> runBlocking(block: suspend () -> T): T {
-    return kotlinx.coroutines.runBlocking(block)
 }

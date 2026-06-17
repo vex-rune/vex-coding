@@ -1,6 +1,10 @@
 package com.vex.coding.service
 
-import com.intellij.codeInsight.completion.*
+import com.intellij.codeInsight.completion.CompletionContributor
+import com.intellij.codeInsight.completion.CompletionParameters
+import com.intellij.codeInsight.completion.CompletionProvider
+import com.intellij.codeInsight.completion.CompletionResultSet
+import com.intellij.codeInsight.completion.CompletionType
 import com.intellij.codeInsight.lookup.CharFilter
 import com.intellij.codeInsight.lookup.LookupElementBuilder
 import com.intellij.openapi.project.Project
@@ -12,15 +16,11 @@ import kotlinx.coroutines.*
 /**
  * 代码补全贡献者
  */
-class CompletionContributor : CompletionContributor() {
+class VexCompletionContributor(project: Project) : CompletionContributor() {
     
-    private val project: Project
-    private val completionService: CompletionService
+    private val completionService = CompletionService(project)
     
-    constructor(project: Project) {
-        this.project = project
-        this.completionService = CompletionService(project)
-        
+    init {
         extend(
             CompletionType.BASIC,
             PlatformPatterns.psiElement(),
@@ -59,15 +59,5 @@ class CompletionContributor : CompletionContributor() {
                 }
             }
         )
-    }
-}
-
-/**
- * 补全字符过滤器
- */
-class VexCompletionCharFilter : CharFilter() {
-    override fun accept(c: Char, prefix: String, lookup: com.intellij.codeInsight.lookup.Lookup): AcceptResult {
-        // 接受所有字符
-        return AcceptResult.ACCEPT_PREFIX
     }
 }

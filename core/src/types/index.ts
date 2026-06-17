@@ -34,7 +34,7 @@ export interface LLMConfig {
 
 /** LLM 默认配置 */
 export const DEFAULT_LLM_CONFIG: LLMConfig = {
-  apiEndpoint: 'https://api.mimo.ai',
+  apiEndpoint: 'https://token-plan-cn.xiaomimimo.com/v1',
   apiKey: '',
   model: 'mimo-pro',
   maxTokens: 2048,

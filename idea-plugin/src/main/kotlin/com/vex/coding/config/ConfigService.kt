@@ -10,7 +10,7 @@ import java.util.prefs.Preferences
 class ConfigService {
     
     private var apiKey: String = ""
-    private var apiEndpoint: String = "https://api.mimo.ai"
+    private var apiEndpoint: String = "https://token-plan-cn.xiaomimimo.com/v1"
     private var model: String = "mimo-pro"
     private var maxTokens: Int = 2048
     

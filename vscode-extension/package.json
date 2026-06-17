@@ -64,7 +64,7 @@
       "properties": {
         "vexCoding.apiEndpoint": {
           "type": "string",
-          "default": "https://api.mimo.ai",
+          "default": "https://token-plan-cn.xiaomimimo.com/v1",
           "description": "API 端点"
         },
         "vexCoding.apiKey": {

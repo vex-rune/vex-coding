@@ -1,8 +1,5 @@
 package com.vex.coding
 
-import com.intellij.openapi.extensions.LoadingScheme
-import com.intellij.openapi.extensions.PluginId
-import com.intellij.openapi.startup.ProjectOpenListener
 import com.intellij.openapi.project.Project
 import com.vex.coding.config.ConfigService
 
@@ -19,10 +16,10 @@ class VexCodingPlugin {
 }
 
 /**
- * 插件初始化
+ * 项目打开监听器
  */
-class VexCodingStartupListener : ProjectOpenListener {
-    override fun projectOpened(project: Project, isImplicitlyOffline: Boolean) {
+class VexCodingProjectListener : com.intellij.openapi.project.ProjectManagerListener {
+    override fun projectOpened(project: Project) {
         // 初始化项目配置
         ConfigService.getInstance().loadProjectConfig(project)
     }

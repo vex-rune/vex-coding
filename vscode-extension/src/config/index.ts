@@ -27,7 +27,7 @@ export class ConfigService {
      * 获取 API 端点
      */
     getApiEndpoint(): string {
-        return vscode.workspace.getConfiguration('vexCoding').get<string>('apiEndpoint', 'https://api.mimo.ai');
+        return vscode.workspace.getConfiguration('vexCoding').get<string>('apiEndpoint', 'https://token-plan-cn.xiaomimimo.com/v1');
     }
     
     /**
