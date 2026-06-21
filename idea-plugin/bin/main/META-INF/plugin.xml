@@ -43,4 +43,10 @@
                 factoryClass="com.vex.coding.ui.ChatToolWindowFactory"
                 canClose="true"
                 canDistract="false"/>
+    
+    <!-- 配置面板 -->
+    <configurable instance="com.vex.coding.config.ConfigurableComponent"
+                  displayName="Vex Coding"
+                  id="com.vex.coding.config"
+                  groupId="tools"/>
 </plugin>
